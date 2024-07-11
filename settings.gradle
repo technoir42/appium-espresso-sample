@@ -1,0 +1,22 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "appium-espresso-sample"
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        google()
+        maven { url "https://storage.googleapis.com/r8-releases/raw" }
+        maven { url "https://jitpack.io" }
+    }
+}
+
+include ":app"
+include ":espresso_server"
+include ":tests"

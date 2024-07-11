@@ -1,0 +1,54 @@
+plugins {
+    alias libs.plugins.android.application
+    alias libs.plugins.kotlin.android
+}
+
+android {
+    compileSdk = 34
+    namespace = "com.example.app"
+    testBuildType = "staging"
+
+    defaultConfig {
+        applicationId = "com.example.app"
+        minSdk = 26
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
+
+        testApplicationId = "io.appium.espressoserver.test"
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables {
+            useSupportLibrary = true
+        }
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    buildTypes {
+        staging {
+            signingConfig signingConfigs.debug
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "$rootDir/obfuscation/proguard-rules.pro"
+            testProguardFile "$rootDir/obfuscation/test-proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    // Align versions of transitive dependencies
+    implementation platform(libs.androidx.compose.bom)
+    implementation platform(libs.kotlin.bom)
+
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.compose.foundation
+    implementation libs.androidx.compose.material3
+
+    androidTestImplementation libs.androidx.test.runner
+    androidTestImplementation libs.appium.espresso.driver
+    androidTestImplementation libs.junit4
+}

@@ -1,0 +1,4 @@
+-dontwarn androidx.activity.compose.ComponentActivityKt
+-dontwarn androidx.appcompat.graphics.drawable.DrawableWrapper
+-dontwarn androidx.test.internal.platform.app.ActivityInvoker$-CC
+-dontwarn javax.lang.model.element.Modifier
